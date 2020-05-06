@@ -11,13 +11,11 @@ Crear una función que compruebe si un año es bisiesto. Intentar hacerlo con un
 
 año = int(input("año: "))
 
-def es_bisiesto():
+def es_bisiesto(año):
+    return año % 4 == 0 and año % 100 != 0 or año % 400 == 0
 
-    if año % 4 == 0 and año % 100 != 0 or año % 400 == 0:
-        return "Es bisiesto"
-    else:
-        return "No es bisiesto"
 
-print(es_bisiesto())
-
-    
+if es_bisiesto(año):
+    print ("Es bisiesto")
+else:
+    print ("No es bisiesto")

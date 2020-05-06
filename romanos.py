@@ -4,11 +4,9 @@ romanos =  {'M' : 1000,
             'L' : 50,
             'X' : 10,
             'V' : 5,
-            'I' : 1
+            'I' : 1,
             }
-
-
-
+existen = ['IV', 'IX', 'XL', 'XC', 'CD', 'CM']
 def romano_a_entero(numero_romano):
     if numero_romano == '':
         return "Error en formato"
@@ -17,7 +15,22 @@ def romano_a_entero(numero_romano):
     entero = 0
     numRepes = 1
     letraAnt = ''
+    fueResta = False
     for letra in numero_romano:
+
+        if letra in romanos:
+            if letraAnt == '' or romanos[letraAnt] >= romanos[letra]:
+                entero += romanos[letra]
+                fueResta = False               
+            else:
+                if letraAnt + letra in existen and not fueResta and numRepes < 2:
+                    entero -= romanos[letraAnt]*2 - romanos[letra]
+                    fueResta = True
+                else:
+                    return "Error en formato"
+        else:
+            return "Error en formato"
+
         if letra == letraAnt and numRepes == 3:
             return "Error en formato"
         elif letra == letraAnt:
@@ -25,11 +38,7 @@ def romano_a_entero(numero_romano):
         else:
             numRepes = 1
 
-        if letra in romanos:
-            entero += romanos[letra]
-        else:
-            return "Error en formato"
-    
+
         letraAnt = letra
 
     return entero
