@@ -16,4 +16,7 @@ class RomanNumberTest(unittest.TestCase):
         self.assertEqual (nr.romano_a_entero('M'), 1000)
         self.assertEqual (nr.romano_a_entero('K'), "Error en formato")
 
-        self.assertEqual (nr.romano_a_entero(''), "Erros en formato")
+        self.assertEqual (nr.romano_a_entero(''), "Error en formato")
+
+if __name__ == '__main__':
+    unittest.main()
