@@ -85,6 +85,9 @@ class IntegerToRomanTest(unittest.TestCase):
         self.assertEqual (romanos.entero_a_romano(2563), 'MMDLXIII')
         self.assertEqual (romanos.entero_a_romano(1479), 'MCDLXXIX')
         self.assertEqual (romanos.entero_a_romano(4000), 'Overflow')
+    
+    def test_entero_a_romano_mayor_de_3999(self):
+        self.assertEqual (romanos.entero_a_romano(4000), 'Overflow')
 
 if __name__ == '__main__':
     unittest.main()
