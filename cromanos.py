@@ -28,7 +28,6 @@ class RomanNumber():
                 self.value = self.rvalue
             
 
-
     def romano_a_entero(self, numero_romano):
         if numero_romano == '':
             return "Error en formato"
@@ -85,6 +84,7 @@ class RomanNumber():
                 return key, value
 
     def __descomponer(self, numero):
+        
         res = []
         for orden in range (3, 0, -1):
             resto = numero % 10 ** orden
@@ -92,3 +92,41 @@ class RomanNumber():
             numero = resto
         res.append(numero)  
         return res
+
+    def __str__(self):
+        return self.rvalue
+
+    def __repr__(self):
+        return self.rvalue
+
+    def __add__(self, other):
+            #   I,     III
+        if isinstance(other, int):
+            suma = self.value + other
+        else:
+            suma = self.value + other.value
+        resultado = RomanNumber(suma)
+        return resultado
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __sub__(self, other):
+        if isinstance(other, int):
+            resta = self.value - other
+        else:
+            resta = self.value - other.value
+        resultado = RomanNumber(resta)
+        return resultado
+
+    def __rsub__(self, other):
+        return self.__sub__(other)
+
+    def __eq__(self, other):
+        if isinstance(other, int):
+            return self.value == other
+        else:
+            return self.value == other.value
+
+    def __req__(self, other):
+        return self.__eq__(other)
